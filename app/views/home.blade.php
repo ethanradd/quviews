@@ -107,7 +107,7 @@
                             </div> 
                         </div>
                     </div>
-                    <h3 class="recent-work-description center"><a href="/items/{{ $item->id }}">{{ $topic->name }}</a> </h3>
+                    <h3 class="recent-work-description center"><a href="/items/{{ $topic->id }}">{{ $topic->name }}</a> </h3>
                 </div>
                 @endforeach
                 
