@@ -52,9 +52,10 @@
                                 <h3><a href="/items/{{ $item->id }}">{{ $item->name }} ({{ $item->year }})</a> </h3>
                                 <p>By {{ $item->creator }}</p>
                                 <p><a class="preview channel-category" href="/items/{{ $item->id }}"><i class="fa {{ $item->category_image }}"></i> &nbsp; Open</a></p>
-                            </div> 
+                            </div>
                         </div>
                     </div>
+                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ $item->name }} ({{ $item->year }})</a> </h3>
                 </div>
                 @endforeach
                 
@@ -75,7 +76,7 @@
                     <li>
                     <a title="{{ $channel->name }}" href="/channels/{{ $channel->id }}">
                     <img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/channels/{{ $channel->image }}" />
-                    <h2>{{ $channel->live }}</h2>
+                    <h2 class="hidden-xs">{{ $channel->live }}</h2>
                     </a>
                     </li>
                     @endforeach
@@ -106,6 +107,7 @@
                             </div> 
                         </div>
                     </div>
+                    <h3 class="recent-work-description center"><a href="/items/{{ $item->id }}">{{ $topic->name }}</a> </h3>
                 </div>
                 @endforeach
                 
