@@ -9,7 +9,7 @@
                 QuViews is a site for quick reviews on <a href="/home#recent_items"  target="_blank">media</a> such as movies, music, video games, books and also gadgets.
                 </p>
                     
-                <p class="lead">The emphasis is on quick, short reviews and discussions, have fun, be creative, make some witty review summaries.</p>
+                <p class="lead">The emphasis is on quick, short reviews and discussions so have fun, be creative.</p>
                     
                 <p class="lead">QuViews offers a <a href="/home#discussion_topics"  target="_blank">general discussion area</a> where users can discuss topics of their interest.</p>
                     
