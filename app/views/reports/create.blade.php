@@ -99,8 +99,8 @@
                              {{ Form::label('reason_6', ' &nbsp; Pornographic content') }}
                              <br />
                              <br />
-                             {{ Form::radio('reason', 'Intentional Spoilers!', null, ['class' => '', 'id' => 'reason_7']) }}
-                             {{ Form::label('reason_7', ' &nbsp; Intentional Spoilers!') }} 
+                             {{ Form::radio('reason', 'Spoilers', null, ['class' => '', 'id' => 'reason_7']) }}
+                             {{ Form::label('reason_7', ' &nbsp; Spoilers') }}
 
                              </div>
                              

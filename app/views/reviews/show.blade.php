@@ -59,7 +59,7 @@
                           </div>
                           
                           <div id="feed_body">
-                          <p>
+                          <p class="controls">
                           <b>
                           <a href="/profiles/{{ $review->profile_id }}">{{ $review->username }}</a>
                           </b>
@@ -81,6 +81,13 @@
 			    {{ Form::hidden('_method', 'DELETE') }}
 			    {{ Form::submit('Delete', array('class' => 'btn btn-feed', 'onclick' => "return confirm('Are you sure?')")) }}
 			{{ Form::close() }}
+                          @endif
+                          @endif
+						  
+                          @if(Auth::check())
+                          @if(Auth::id() != $review->author_id)
+			  <span class="light_gray_font pull-right"> &nbsp; &nbsp;</span>
+			  <a title="Report" class="btn btn-report pull-right" href="/reports/create/{{ $review->id }}/review">Report</a>
                           @endif
                           @endif
                           </p>
