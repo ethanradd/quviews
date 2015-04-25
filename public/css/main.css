@@ -1585,6 +1585,24 @@ input.search-form:hover {
   opacity: 1;
 }
 
+.recent-work-description {
+  margin-top: 0;
+  margin-bottom: 20px;
+  width: 100%;
+  min-height: 50px;
+  background-color: none;
+}
+
+.recent-work-description a {
+  display: block;
+  padding: 20px 15px;
+}
+
+.recent-work-description a:hover {
+  color: #FFF;
+  background-color: #2E2E2E;
+}
+
 #services {
   background: #000 url(../images/services/bg_services.png);
   background-size: cover;
