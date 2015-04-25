@@ -309,6 +309,8 @@
                         <li><a href="/about">About QuViews</a></li>
                         &nbsp;
                         <li><a href="/about#tos"><i class="fa fa-exclamation-triangle"></i> &nbsp; Terms Of Service</a></li>
+                        &nbsp;
+                        <li><a href="/about#privacy">Privacy</a></li>
                     </ul>
                 </div>
             </div>

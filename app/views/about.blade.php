@@ -11,9 +11,9 @@
                     
                 <p class="lead">The emphasis is on quick, short reviews and discussions, have fun, be creative, make some witty review summaries.</p>
                     
-                <p class="lead">QuViews also offers a <a href="/home#discussion_topics"  target="_blank">general discussion area</a> where users can discuss topics of their interest.</p>
+                <p class="lead">QuViews offers a <a href="/home#discussion_topics"  target="_blank">general discussion area</a> where users can discuss topics of their interest.</p>
                     
-                <p class="lead">QuViews also affers <a href="/home#tv" target="_blank">video aggregation</a> that allows users to view the latest live and recorded video content on their interests.</p>
+                <p class="lead">QuViews also affers a <a href="/home#tv" target="_blank">video aggregator</a> that allows users to view the latest live and recorded video content.</p>
             </div>
                 
             <div class="wow fadeInDown">
@@ -28,7 +28,7 @@
                 Membership can be revoked at any time for any reason.
                 Each accepted member is granted one, and only one, username.
                 If you are caught using multiple usernames, you will be subject to immediate and permanent banning of all accounts involved.
-                If you wish to change your username, contact the admin.
+                If you wish to change your username, contact the admin by email through quviews@outlook.com.
                 </p>
                 
                 <p>
@@ -114,11 +114,11 @@
                 </p>
                     
                 <p>
-                <b>F.</b> SPOILERS
+                <b>F.</b> Spoilers
                 </p>
                 
                 <p>
-                Avoid including spoilers in your reviews. Spoilers may arise if there is consent in discussions, it is not allowed to raise spoilers purposely to annoy other users, moderation action might betaken on offenders.
+                Avoid including spoilers in your reviews. Spoilers may arise if there is consent in discussions, it is not allowed to raise spoilers purposely to annoy other users.
                 </p>
                 
                 <br />
@@ -141,7 +141,7 @@
                 and are not responsible for the contents of any message.
                 The messages express the views of the author of the message,
                 not necessarily the views of QuViews LLC or any entity associated with it.
-                Any user who feels that a posted message is objectionable is encouraged to contact us immediately by email.
+                Any user who feels that a posted message is objectionable is encouraged to contact us immediately by email through quviews@outlook.com.
                 We have the ability to remove objectionable messages and we will make every effort to do so, within a reasonable time frame, if we determine that removal is necessary.
                 This is a manual process, however, so please realize that we may not be able to remove or edit particular messages immediately.
                 </p>
@@ -158,8 +158,44 @@
                 
                 <p>
                 These aforementioned Terms of Service are subject to change at any time without notification.
+                </p>   
+            </div>
+                
+            <br />
+            <br />
+            
+            <div class="wow fadeInDown">
+                <h2 id="privacy" class="center">Privacy</h1>
+                
+                <p>
+                QuViews respects your privacy. This document explains our policy relating to the personal data that is received by us.
                 </p>
-            </div>    
+                <br />
+                
+                <p>
+                <b>Information Collected</b><br />
+                QuViews' server automatically records information when you visit our website, including your IP address and browser used. Additionally, at the time of registration, we retain data on your email address and
+                any other information that you choose to denote in your profile. We also use cookies to store your account information for a convenient browsing experience.
+                </p>
+                <br />
+                
+                <p>
+                <b>Uses</b><br />
+                Third parties outside of QuViews may receive aggregated non-personal information.
+                Under limited circumstances we may share personal information with third parties as well,
+                including when complying with legal matters and also when ensuring the security of our site and related services.
+                </p>
+                <br />
+                    
+                <p>
+                <b>Your Choices</b><br />
+                Personal information fields in your profile, outside of the necessary information to process
+                and approve your account, are entirely optional and at your discretion to provide. Your account information at signup is necessary to post on QuViews. If you do not wish to provide this information,
+                please do not register to post at QuViews, as you can still read content as an unregistered guest.
+                </p>
+                <br />
+                
+            </div>
       
         </div><!--/.container-->
     </section><!--/#partner-->
