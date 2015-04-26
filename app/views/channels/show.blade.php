@@ -15,7 +15,7 @@
 	    
             <div class="row">
                 <div class="features">
-                    <div class="col-md-3 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="col-md-3 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="center wow">
 			<!-- left -->
 			
@@ -26,7 +26,7 @@
                         </div>
                     </div><!--/.col-md-4-->
                     
-                    <div class="col-md-6 col-sm-6 wow channel-description" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="col-md-6 wow channel-description" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="wow">
                         <!-- center -->
 			<span class="channel-title">{{ $channel->name }}</span>
@@ -39,11 +39,14 @@
 			
 			<p><b>About Channel</b></p>
                         <p>{{ $channel->description }}</p>
-			
+							
+						<!-- ##Ed Quick fix for spacing -->
+						<br />
+						<br />
                         </div>
                     </div><!--/.col-md-4-->
 		    
-                    <div class="col-md-3 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="center wow fadeInDown">
                         <!-- right -->
 			<span class="{{ $channel->live }}">{{ strtoupper($channel->live); }}</span>
@@ -52,7 +55,6 @@
 		    
                 </div><!--/.services-->
             </div><!--/.row-->
-           
         </div><!--/.container-->
     </section><!--/#feature-->
 @stop
