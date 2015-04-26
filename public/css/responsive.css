@@ -11,9 +11,7 @@
     margin-left: -10px;
     margin-right: -10px;
   }
-
   
-
 }
 
 /* md */
@@ -94,7 +92,16 @@
   ul.social_icons li{
     margin-right: 0;
   }
-
+  
+  /* ##Ed added */
+  .navbar-secondary {
+    font-size: 80%;
+  }
+  
+  .btn {
+    font-size: 80%;
+  }
+  
 }
 
 
@@ -183,6 +190,26 @@
   .blog .blog-item .entry-meta > span a{
     font-size: 10px;
   }
+  
+  /* ##Ed added */
+  .navbar-secondary {
+    font-size: 80%;
+  }
+  
+  input.search-form:hover {
+    width: 120px;
+  }
+  
+  .recent-work-description a {
+    display: block;
+    padding: 0px;
+    margin: 10px 0px 20px 0px;
+  }
+  
+  .btn {
+    font-size: 70%;
+  }
+
 }
 
 /* xs */
@@ -291,8 +318,16 @@
   .post_reply_comments {
     padding-left: 20px;
   }
-    
-
+  
+  /* ##Ed added */
+  .navbar-secondary {
+    font-size: 80%;
+  }
+  
+  .btn {
+    font-size: 70%;
+  }
+  
 }
 
 /* XS Portrait */
@@ -300,4 +335,3 @@
 
 
 }
-

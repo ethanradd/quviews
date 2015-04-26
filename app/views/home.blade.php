@@ -10,10 +10,10 @@
             </div>
                     
            <div class="row">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 ">
                         <!-- left -->
                 </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6  wow center">
+                <div class="col-md-4  wow center">
                         <!-- center -->
                         {{ Form::open(array('url' => '/search-item')) }}
                         <div class="form-group">
@@ -23,7 +23,7 @@
                         {{ HTML::link('/random-item', 'Random', array('class'=>'btn btn-default')) }} 
                         {{ Form::close() }}
                 </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 ">
                         <!-- right -->
                 </div><!--/.col-md-4-->
             </div> <!--/.row-->
@@ -76,7 +76,7 @@
                     <li>
                     <a title="{{ $channel->name }}" href="/channels/{{ $channel->id }}">
                     <img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/channels/{{ $channel->image }}" />
-                    <h2 class="hidden-xs">{{ $channel->live }}</h2>
+                    <h2 class="hidden-xs hidden-sm">{{ $channel->live }}</h2>
                     </a>
                     </li>
                     @endforeach

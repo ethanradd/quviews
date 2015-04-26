@@ -3,10 +3,10 @@
 @section('content')
     
     <section id="recent-works">
-            <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="features">
-                    <div class="col-md-3 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="col-md-3 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="center wow">
                         <!-- left -->
                         <div class="item_image">
@@ -42,12 +42,12 @@
                         </div>
                     </div><!--/.col-md-4-->
                     
-                    <div class="col-md-6 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="col-md-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="wow">
                         <!-- center -->
                         
                         <div id="header_section">
-                          <div id="header_img" class="text-center">
+                          <div id="header_img" class="text-center hidden-xs hidden-sm">
                             <h2>
                             <i class="fa {{ $category->image }} fa-2x"></i>
                             <br />
@@ -232,7 +232,7 @@
                         </div>
                     </div><!--/.col-md-4-->
 
-                    <div class="col-md-3 col-sm-6 wow margin_top_20" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="col-md-3 wow margin_top_20" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="wow center">
                         <!-- right -->
                         <div class="ad_space">
@@ -283,6 +283,6 @@
                     </div><!--/.col-md-4-->
                 </div><!--/.services-->
             </div><!--/.row-->
-            </div><!--/ .container-->
+        </div><!--/ .container-->
     </section>
 @stop
