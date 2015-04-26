@@ -98,6 +98,17 @@
     font-size: 80%;
   }
   
+  .navbar-secondary .btn {
+    margin: auto;
+    margin-top: 0;
+    width: auto;
+  }
+  
+  .navbar-secondary i {
+    font-size: 100%;
+    padding: 2px 0;
+  }
+  
   .btn {
     font-size: 80%;
   }
@@ -196,6 +207,17 @@
     font-size: 80%;
   }
   
+  .navbar-secondary .btn {
+    margin: auto;
+    margin-top: 0;
+    width: auto;
+  }
+  
+  .navbar-secondary i {
+    font-size: 100%;
+    padding: 2px 0;
+  }
+  
   input.search-form:hover {
     width: 120px;
   }
@@ -207,7 +229,7 @@
   }
   
   .btn {
-    font-size: 70%;
+    font-size: 80%;
   }
 
 }
@@ -325,7 +347,20 @@
   }
   
   .btn {
-    font-size: 70%;
+    font-size: 90%;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .navbar-secondary .btn {
+    margin: auto;
+    margin-top: 0;
+    width: auto;
+  }
+  
+  .navbar-secondary i {
+    font-size: 100%;
+    padding: 2px 0;
   }
   
 }

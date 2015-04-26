@@ -192,7 +192,7 @@
 		<li class="dropdown">
             <a href="/home#recent_items">Recent Items</a>
             <a href="/home#tv">TV Channels</a>
-            <a href="/home#discussion_topics">Discussion Topics</a>
+            <a href="/home#discussion_topics">Topics</a>
             <a href="/random-item" title="random item"><i class="fa fa-random"></i></a>
 		</li>
         </ul>
