@@ -11,11 +11,12 @@
                         <!-- left -->
                         </div>
                     </div><!--/.col-md-4-->
-
+                        
                     <div class="col-md-4 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="wow">
                         <!-- center -->
-                        <h2>{{ $header }} <span class="pull-right"><a href="/register">Register</a></span></h2>
+                        
+                        <h2>{{ $header }}</h2>
                         
                         <div id="bottom_line">
                         </div>
@@ -24,28 +25,32 @@
                         {{ HTML::ul($errors->all()) }}
                         </span>
                         
-                        {{ Form::open(array('url' => 'login')) }}
+                        <!-- form goes here -->
+                        {{ Form::open(array('url' => 'register')) }}
+                             <div class="form-group">
+                             {{ Form::label('email', 'Email Address') }}
+                             {{ Form::text('email', '', array('class'=>'form-control')) }}
+                             </div>
+                        
                              <div class="form-group">
                              {{ Form::label('username', 'Username') }}
                              {{ Form::text('username', '', array('class'=>'form-control')) }}
                              </div>
-                             
+                        
                              <div class="form-group">
                              {{ Form::label('password', 'Password') }}
                              {{ Form::password('password', array('class'=>'form-control')) }}
                              </div>
                                 
-                             <div class="form-group">
-                             {{ Form::checkbox('remember', null, null, array('id'=>'remember')) }}
-                             {{ Form::label('remember', ' &nbsp; Remember me', array('class'=>'light_gray_font')) }}
-                             
-                             <p class="pull-right"><a href="/password-reset">Forgot your password?</a></p>
+                             <div class="form-group"> 
+                             {{ Form::captcha() }}
                              </div>
+                                
+                             <p><small>By clicking Sign Up, you agree to our <a href="/about#tos" target="_blank">Terms</a></small></p>
                              
-                             {{ Form::submit('Log In', array('class'=>'btn btn-default')) }}
+                             {{ Form::submit('Sign Up', array('class'=>'btn btn-default')) }}
                         
                         {{ Form::close() }}
-                        </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -57,4 +62,5 @@
             </div><!--/.row-->
         </div><!--/.container-->
     </section>
+
 @stop
