@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ $item->name }} ({{ $item->year }})</a> </h3>
+                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ Str::limit($item->name, 29) }} ({{ $item->year }})</a> </h3>
                 </div>
                 @endforeach
                 
