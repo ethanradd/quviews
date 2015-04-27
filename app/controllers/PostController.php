@@ -154,7 +154,7 @@ class PostController extends \BaseController {
                                  'items.id as item_id', 'items.name as item_name', 'items.locked as item_locked',
                                  'categories.name as category_name', 'categories.image as category_image')
                         ->where('replies.post_id', '=', $id)
-                        ->orderBy('created_at', 'DESC')->paginate(15);
+                        ->orderBy('created_at', 'ASC')->paginate(15);
                         
             // Count Replies
             $reply_count = Reply::where('replies.post_id', '=', $id)->count();
