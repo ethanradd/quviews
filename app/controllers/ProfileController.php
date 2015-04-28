@@ -424,7 +424,6 @@ class ProfileController extends \BaseController {
                 // Store new Profile details
                 $profile = Profile::find($id);
                 
-                $profile->user_id = Auth::id();
                 $profile->first_name = Input::get( 'first_name' );
                 $profile->last_name = Input::get( 'last_name' );
                 $profile->gender = Input::get( 'gender' );
