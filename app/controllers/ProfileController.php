@@ -459,7 +459,7 @@ class ProfileController extends \BaseController {
                     $destinationPath = public_path() . '/images/profiles';
                     $file_extension = $file->getClientOriginalExtension();
                     // name image by unique user_id
-                    $filename = Auth::id() . '.' . $file_extension;
+                    $filename = $profile->user_id . '.' . $file_extension;
                     $filename = strtolower($filename);
                     $uploadSuccess = $file->move($destinationPath, $filename);
                     
@@ -1007,7 +1007,7 @@ class ProfileController extends \BaseController {
 			if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
 				File::delete($old_filename_medium);
 			}
-					
+			
 			// delete thumbnail
 			if ((File::exists($old_filename_thumbnail)) && ($image_name != "default.jpg")) {
 				File::delete($old_filename_thumbnail);
