@@ -216,6 +216,9 @@ Route::get('/favorite-item/{item_id}', 'ItemController@favoriteItem');
 // Undo Item favorite
 Route::get('/unfavorite-item', 'ItemController@unFavoriteItem');
 
+// Remove item image
+Route::get('items/remove-item-image/{item_id}', array('as' => 'remove_item_image', 'uses' => 'ItemController@removeItemImage'));
+
 /* -- [POSTS] -------------------------------------------------------------------------- */
 
 // Using route:resource for Posts

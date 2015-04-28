@@ -37,11 +37,19 @@
 	<div class="welcome">
 
         <h2>Reset Your QuViews password</h2>
+			
+			<?php
+			$string = URL::to('password-reset-now/' . $validation_code . '/' . $user_email );
+			$string = preg_replace(
+						  "~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~",
+						  "<a href=\"\\0\">\\0</a>", 
+						  $string);
+			?>
 		
         <div>
 			<p>Your username is <b>{{ $username }}</b></p>
             <p>You can reset your QuViews password by clicking this link:</p>
-            {{ URL::to('password-reset-now/' . $validation_code . '/' . $user_email ) }}
+            {{ $string }}
         </div>
 		
 	</div>

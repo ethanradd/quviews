@@ -19,7 +19,7 @@ class ItemController extends \BaseController {
             // pages that don't require log in to access
             $this->beforeFilter('auth', array('except' => array('show', 'doSearchitem', 'showSearchitem', 'doRandomitem', 'feed')));
             // pages only admin can access
-            $this->beforeFilter('allow_only_admin', array('only' => array('index', 'destroy')));
+            $this->beforeFilter('allow_only_admin', array('only' => array('index', 'destroy', 'removeItemImage')));
             // non-admin can only access editable item
             // ##Ed where is this defined? or is it redundant
             $this->beforeFilter('allow_user_if_editable', array('only' => 'edit'));
@@ -98,6 +98,32 @@ class ItemController extends \BaseController {
                 $filename = str_random(30) . '.' . $file_extension;
                 $filename = strtolower($filename);
                 $uploadSuccess = $file->move($destinationPath, $filename);
+				
+                // Save Thumbnail
+                
+                // full image file path to original image we are trying to shrink
+                $original_file_path = public_path() . '/images/items/' . $filename;
+				
+				// full image name file path for medium
+				$medium_file = public_path() . '/images/items/medium/' . $filename;
+                
+                // full image name file path for thumbnail
+                $thumb_file = public_path() . '/images/items/small/' . $filename;
+				
+                // path to folder where medium will be stored
+                $medium_folder = public_path() . '/images/items/medium/';
+                
+                // path to folder where thumbnail will be stored
+                $thumb_folder = public_path() . '/images/items/small/';
+				
+				// generate and store medium image
+                $im_medium = App::make('ProfileController')->thumbnail($original_file_path, 400);
+                $medium_uploadSuccess = App::make('ProfileController')->imageToFile($im_medium, $medium_file, $medium_folder);
+                
+				// generate and store small image
+                $im_small = App::make('ProfileController')->thumbnail($original_file_path, 100);
+                $thumbnail_uploadSuccess = App::make('ProfileController')->imageToFile($im_small, $thumb_file, $thumb_folder);
+				
                 
                 // ##Ed Add condition to check if file was uploaded successfully
                 
@@ -220,7 +246,7 @@ class ItemController extends \BaseController {
             $data['header'] = $item->name . " (" . $item->year . ") <br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
 			}
             $data['title'] = "QuViews - " . $item->name . " (" . $item->year . ")" . " - Quick Reviews";
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['category'] = $item_category;
             $data['reviews'] = $reviews;
             $data['posts'] = $posts;
@@ -282,7 +308,7 @@ class ItemController extends \BaseController {
             
             $data['header'] = "Edit Item";
             $data['title'] = "QuViews - Editing an Item";
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['item'] = $item;
             
             // show the edit form and pass the item data
@@ -337,11 +363,25 @@ class ItemController extends \BaseController {
                 if(Input::hasfile('image')) {
                     // delete old image file
                     $image_name = $item->image;
-                    $old_filename = public_path() . '/images/items/' . $image_name;
+					
+					$old_filename = public_path() . '/images/items/' . $image_name;
+					$old_filename_medium =  public_path() . '/images/items/medium/' . $image_name;
+					$old_filename_thumbnail =  public_path() . '/images/items/small/' . $image_name;
                     
-                    if (File::exists($old_filename)) {
-                        File::delete($old_filename);
-                    }
+					// delete main image
+					if ((File::exists($old_filename)) && ($image_name != "default.jpg")) {
+						File::delete($old_filename);
+					}
+					
+					// delete medium
+					if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
+						File::delete($old_filename_medium);
+					}
+					
+					// delete thumbnail
+					if ((File::exists($old_filename_thumbnail)) && ($image_name != "default.jpg")) {
+						File::delete($old_filename_thumbnail);
+					}
                     
                     // add new image file
                     $file = Input::file('image');
@@ -352,6 +392,31 @@ class ItemController extends \BaseController {
                     $uploadSuccess = $file->move($destinationPath, $filename);
                     
                     $item->image =  $filename;
+					
+                    // Save Thumbnail
+                    
+                    // full image file path to original image we are trying to shrink
+                    $original_file_path = public_path() . '/images/items/' . $filename;
+					
+					// full image name file path for medium
+					$medium_file = public_path() . '/images/items/medium/' . $filename;
+                    
+                    // full image name file path for thumbnail
+                    $thumb_file = public_path() . '/images/items/small/' . $filename;
+                    
+					// path to folder where medium will be stored
+					$medium_folder = public_path() . '/images/items/medium/';
+					
+                    // path to folder where thumbnail will be stored
+                    $thumb_folder = public_path() . '/images/items/small/';
+					
+					// generate and store medium image
+					$im_medium = App::make('ProfileController')->thumbnail($original_file_path, 400);
+					$medium_uploadSuccess = App::make('ProfileController')->imageToFile($im_medium, $medium_file, $medium_folder);
+                    
+					// generate and store small image
+                    $im_small = App::make('ProfileController')->thumbnail($original_file_path, 100);
+                    $thumbnail_uploadSuccess = App::make('ProfileController')->imageToFile($im_small, $thumb_file, $thumb_folder);
                 }
                 
                 $item->save();
@@ -376,11 +441,25 @@ class ItemController extends \BaseController {
             
             // delete item image file
             $image_name = $item->image;
-            $old_filename = public_path() . '/images/items/' . $image_name;
+
+		    $old_filename = public_path() . '/images/items/' . $image_name;
+		    $old_filename_medium =  public_path() . '/images/items/medium/' . $image_name;
+		    $old_filename_thumbnail =  public_path() . '/images/items/small/' . $image_name;
             
-            if (File::exists($old_filename)) {
-                File::delete($old_filename);
-            }
+		    // delete main image
+		    if ((File::exists($old_filename)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename);
+		    }
+					
+		    // delete medium
+		    if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename_medium);
+		    }
+					
+		    // delete thumbnail
+			if ((File::exists($old_filename_thumbnail)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename_thumbnail);
+		    }
             
             // delete all related item reviews (one to many relationship)
             // ##Ed More sophisticated solution involving model can be found:
@@ -737,4 +816,55 @@ class ItemController extends \BaseController {
             return View::make('posts-feed')->with($data);
             }
         }
+		
+	// Make item image default
+	public function makeItemImageDefault($id){
+            // get profile
+            $item = Item::find($id);
+			
+			// make item image default
+			$item->image = "default.jpg";
+			$item->save();
+	}
+		
+/*
+ * Remove Item Image
+ *
+ *
+ * */
+
+	public function removeItemImage($id)
+	{
+            // get item
+            $item = Item::find($id);
+            
+            // delete item image file
+            $image_name = $item->image;
+
+		    $old_filename = public_path() . '/images/items/' . $image_name;
+		    $old_filename_medium =  public_path() . '/images/items/medium/' . $image_name;
+		    $old_filename_thumbnail =  public_path() . '/images/items/small/' . $image_name;
+            
+		    // delete main image
+		    if ((File::exists($old_filename)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename);
+		    }
+					
+		    // delete medium
+		    if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename_medium);
+		    }
+					
+		    // delete thumbnail
+			if ((File::exists($old_filename_thumbnail)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename_thumbnail);
+		    }
+			
+			// make item image default
+			$this->makeItemImageDefault($id);
+
+            // redirect
+            Session::flash('message_success', 'Successfully removed item image!');
+            return Redirect::to('/items/' . $id);
+	}
 }

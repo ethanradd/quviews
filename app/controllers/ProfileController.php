@@ -106,15 +106,26 @@ class ProfileController extends \BaseController {
                 
                 // full image file path to original image we are trying to shrink
                 $original_file_path = public_path() . '/images/profiles/' . $filename;
+				
+				// full image name file path for medium
+				$medium_file = public_path() . '/images/profiles/medium/' . $filename;
                 
                 // full image name file path for thumbnail
                 $thumb_file = public_path() . '/images/profiles/small/' . $filename;
+				
+                // path to folder where medium will be stored
+                $medium_folder = public_path() . '/images/profiles/medium/';
                 
                 // path to folder where thumbnail will be stored
                 $thumb_folder = public_path() . '/images/profiles/small/';
+				
+				// generate and store medium image
+                $im_medium = $this->thumbnail($original_file_path, 200);
+                $medium_uploadSuccess = $this->imageToFile($im_medium, $medium_file, $medium_folder);
                 
-                $im = $this->thumbnail($original_file_path, 100);
-                $thumbnail_uploadSuccess = $this->imageToFile($im, $thumb_file, $thumb_folder);
+				// generate and store small image
+                $im_small = $this->thumbnail($original_file_path, 100);
+                $thumbnail_uploadSuccess = $this->imageToFile($im_small, $thumb_file, $thumb_folder);
                 
                 // ##Ed Add condition to check if file was uploaded successfully
 				} else {
@@ -256,48 +267,6 @@ class ProfileController extends \BaseController {
                         ->where('replies.author_id', '=', $user_id)
                         ->orderBy('created_at', 'DESC')->take(3)->get();
                         
-            /*
-            // ##Ed using union, the columns must be identical 
-            // get user post + replies
-            $feed_posts = DB::table('users')
-                        ->join('posts', 'users.id', '=', 'posts.author_id')
-                        ->leftjoin('replies', 'posts.id', '=', 'replies.post_id')
-                        ->leftjoin('profiles', 'users.id', '=', 'profiles.user_id')
-                        ->leftjoin('items', 'posts.item_id', '=', 'items.id')
-                        ->leftjoin('categories', 'items.category_id', '=', 'categories.id')
-                        ->select('users.username', 'replies.id', 'replies.author_id', 'replies.body',
-                                 'replies.quote_id', 'replies.created_at', 'replies.updated_at',
-                                 'posts.id as post_id', 'posts.author_id as post_author_id', 'posts.body as post_body',
-                                 'profiles.id as profile_id', 'profiles.image as profile_image',
-                                 'items.id as item_id', 'items.name as item_name', 'items.locked as item_locked',
-                                 'categories.name as category_name', 'categories.image as category_image',
-                                 DB::raw('"Post" as type'))
-                        ->where('posts.author_id', '=', $user_id);
-                        
-        
-            $feed_replies = DB::table('users')
-                        ->join('posts', 'users.id', '=', 'posts.author_id')
-                        ->leftjoin('replies', 'posts.id', '=', 'replies.post_id')
-                        ->leftjoin('profiles', 'users.id', '=', 'profiles.user_id')
-                        ->leftjoin('items', 'posts.item_id', '=', 'items.id')
-                        ->leftjoin('categories', 'items.category_id', '=', 'categories.id')
-                        ->select('users.username', 'replies.id', 'replies.author_id', 'replies.body',
-                                 'replies.quote_id', 'replies.created_at', 'replies.updated_at',
-                                 'posts.id as post_id', 'posts.author_id as post_author_id', 'posts.body as post_body',
-                                 'profiles.id as profile_id', 'profiles.image as profile_image',
-                                 'items.id as item_id', 'items.name as item_name', 'items.locked as item_locked',
-                                 'categories.name as category_name', 'categories.image as category_image',
-                                 DB::raw('"Reply" as type'))
-                        ->where('replies.author_id', '=', $user_id);
-                        
-                        $feed = $feed_posts->union($feed_replies)->orderBy('created_at', 'DESC')->take(30)->get();
-                        
-                        // Posts + Replies
-                        $feed_count = $post_count + $reply_count;
-            */
-                        
-                        
-            
             // Count Reviews
             $review_count = Review::where('author_id', '=', $user_id)->count();
             
@@ -345,7 +314,7 @@ class ProfileController extends \BaseController {
 			
             $data['header'] = $user->username . "'s Profile" . $status;
             $data['title'] = "QuViews - " . $user->username . " - Quick Reviews";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['reviews'] = $reviews;
             $data['posts'] = $posts;
             $data['replies'] = $replies;
@@ -397,7 +366,7 @@ class ProfileController extends \BaseController {
             
             $data['header'] = "Edit Profile";
             $data['title'] = "QuViews - Editing a Profile";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['profile'] = $profile;
             $data['user'] = $user;
             $data['year'] = $y;
@@ -468,11 +437,17 @@ class ProfileController extends \BaseController {
                     // delete old image file
 					$image_name = $profile->image;
 					$old_filename = public_path() . '/images/profiles/' . $image_name;
+					$old_filename_medium =  public_path() . '/images/profiles/medium/' . $image_name;
 					$old_filename_thumbnail =  public_path() . '/images/profiles/small/' . $image_name;
 					
 					// delete main image
 					if ((File::exists($old_filename)) && ($image_name != "default.jpg")) {
 						File::delete($old_filename);
+					}
+					
+					// delete medium
+					if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
+						File::delete($old_filename_medium);
 					}
 					
 					// delete thumbnail
@@ -495,15 +470,26 @@ class ProfileController extends \BaseController {
                     
                     // full image file path to original image we are trying to shrink
                     $original_file_path = public_path() . '/images/profiles/' . $filename;
+					
+					// full image name file path for medium
+					$medium_file = public_path() . '/images/profiles/medium/' . $filename;
                     
                     // full image name file path for thumbnail
                     $thumb_file = public_path() . '/images/profiles/small/' . $filename;
                     
+					// path to folder where medium will be stored
+					$medium_folder = public_path() . '/images/profiles/medium/';
+					
                     // path to folder where thumbnail will be stored
                     $thumb_folder = public_path() . '/images/profiles/small/';
+					
+					// generate and store medium image
+					$im_medium = $this->thumbnail($original_file_path, 200);
+					$medium_uploadSuccess = $this->imageToFile($im_medium, $medium_file, $medium_folder);
                     
-                    $im = $this->thumbnail($original_file_path, 100);
-                    $thumbnail_uploadSuccess = $this->imageToFile($im, $thumb_file, $thumb_folder);
+					// generate and store small image
+                    $im_small = $this->thumbnail($original_file_path, 100);
+                    $thumbnail_uploadSuccess = $this->imageToFile($im_small, $thumb_file, $thumb_folder);
                     
                 }
                 
@@ -534,13 +520,19 @@ class ProfileController extends \BaseController {
             // delete old image file
 			$image_name = $profile->image;
 			$old_filename = public_path() . '/images/profiles/' . $image_name;
+			$old_filename_medium =  public_path() . '/images/profiles/medium/' . $image_name;
 			$old_filename_thumbnail =  public_path() . '/images/profiles/small/' . $image_name;
 					
 			// delete main image
 			if ((File::exists($old_filename)) && ($image_name != "default.jpg")) {
 				File::delete($old_filename);
 			}
-					
+			
+			// delete medium
+			if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename_medium);
+			}
+			
 			// delete thumbnail
 			if ((File::exists($old_filename_thumbnail)) && ($image_name != "default.jpg")) {
 				File::delete($old_filename_thumbnail);
@@ -609,7 +601,7 @@ class ProfileController extends \BaseController {
             // put data into array
             $data['header'] = $user->username . "'s Reviews Feed <span class=\"light_gray_font pull-right\">" . number_format($review_count) . " reviews</span>";
             $data['title'] = "QuViews - " . $user->username . " - Reviews Feed - Quick Reviews";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['reviews'] = $reviews;
             $data['good_review_count'] =  $good_review_count;
             $data['eh_review_count'] =  $eh_review_count;
@@ -664,7 +656,7 @@ class ProfileController extends \BaseController {
             // put data into array
             $data['header'] = $user->username . "'s Posts Feed <span class=\"light_gray_font pull-right\">" . number_format($post_count) . " posts</span>";
             $data['title'] = "QuViews - " . $user->username . " - Posts Feed - Discussion";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['posts'] = $posts;
             $data['user'] = $user;
             $data['profile'] = $profile;
@@ -713,7 +705,7 @@ class ProfileController extends \BaseController {
             // put data into array
             $data['header'] = $user->username . "'s Replies Feed <span class=\"light_gray_font pull-right\">" . number_format($reply_count) . " replies</span>";
             $data['title'] = "QuViews - " . $user->username . " - Replies Feed - Discussion";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['replies'] = $replies;
             $data['user'] = $user;
             $data['profile'] = $profile;
@@ -774,7 +766,7 @@ class ProfileController extends \BaseController {
             }
             
             $data['title'] = "QuViews - " . $user->username . " - Replies Feed - Discussion";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['replies'] = $replies;
             $data['user'] = $user;
             $data['profile'] = $profile;
@@ -839,7 +831,7 @@ class ProfileController extends \BaseController {
             }
             
             $data['title'] = "QuViews - " . $user->username . " - Conversation History Feed";
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['replies'] = $replies;
             $data['user'] = $user;
             $data['profile'] = $profile;
@@ -1004,11 +996,17 @@ class ProfileController extends \BaseController {
 			}
 			
             $old_filename = public_path() . '/images/profiles/' . $image_name;
+			$old_filename_medium =  public_path() . '/images/profiles/medium/' . $image_name;
 			$old_filename_thumbnail =  public_path() . '/images/profiles/small/' . $image_name;
             
 			// delete main image
 			if ((File::exists($old_filename)) && ($image_name != "default.jpg")) {
 				File::delete($old_filename);
+			}
+			
+			// delete medium
+			if ((File::exists($old_filename_medium)) && ($image_name != "default.jpg")) {
+				File::delete($old_filename_medium);
 			}
 					
 			// delete thumbnail
@@ -1045,7 +1043,7 @@ class ProfileController extends \BaseController {
         $data['header'] = "Change User Role";
         $data['title'] = "QuViews";
 		$data['profile'] = $profile;
-		$data['image_path'] = "images/profiles/" . $profile->image;
+		$data['image_path'] = "images/profiles/medium/" . $profile->image;
 		$data['user'] = $user;
         
         return View::make('/boss/change-user-role', $data);

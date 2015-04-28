@@ -45,7 +45,7 @@
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <a href="/items/{{ $item->id }}">
-                        <img class="img-responsive" src="images/items/{{ $item->image }}" alt="">
+                        <img class="img-responsive" src="images/items/medium/{{ $item->image }}" alt="">
                         </a>
                         <div class="overlay">
                             <div class="recent-work-inner">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ Str::limit($item->name, 29) }} ({{ $item->year }})</a> </h3>
+                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ Str::limit($item->name, 25) }} ({{ $item->year }})</a> </h3>
                 </div>
                 @endforeach
                 

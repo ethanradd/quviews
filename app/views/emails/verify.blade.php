@@ -39,9 +39,18 @@
         <h2>Verify Your QuViews account</h2>
 		
         <div>
+		
+			<?php
+			$string = URL::to('verify/' . $validation_code . '/' . $user_email );
+			$string = preg_replace(
+						  "~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~",
+						  "<a href=\"\\0\">\\0</a>", 
+						  $string);
+			?>
+			
             <p>Thanks for creating an account.</p>
             <p>Please verify your account by clicking this link:</p>
-            {{ URL::to('verify/' . $validation_code . '/' . $user_email ) }}
+            {{ $string }}
         </div>
 		
 	</div>

@@ -12,6 +12,11 @@
                         <a href="/items/{{ $item->id }}">{{ HTML::image($image_path, 'item image') }}</a>
                         </div>
                         <p class="light_gray_font">{{ $item->locked }}</p>
+                        <p>
+                        @if((Auth::check()) && (Auth::user()->role == "admin"))
+                        <a class="btn btn-primary" href="/items/remove-item-image/{{ $item->id }}" onclick="return confirm('Are you sure?')">REMOVE Item Image</a>
+                        @endif
+                        </p>
                         </div>
                     </div><!--/.col-md-4-->
 
