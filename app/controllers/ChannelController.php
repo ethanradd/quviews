@@ -86,7 +86,7 @@ class ChannelController extends \BaseController {
                 
                 // Add Image for channel logo
                 $file = Input::file('image');
-                $destinationPath = public_path().'\images\channels';
+				$destinationPath = public_path() . '/images/channels';
                 $file_extension = $file->getClientOriginalExtension();
                 $filename = str_random(25) . '.' . $file_extension;
                 $filename = strtolower($filename);
