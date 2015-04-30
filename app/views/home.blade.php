@@ -8,7 +8,7 @@
                 <h1 class="big_blue">QuViews</h1>
                 <p class="lead">Your Quick Reviews</p>
                 <br />
-                <span class="light_gray_font">
+                <span class="light_gray_font shrink-font">
                 <a href="/all/movies">movies</a> &nbsp; . &nbsp;
                 <a href="/all/tv">tv</a> &nbsp; . &nbsp;
                 <a href="/all/music">music</a> &nbsp; . &nbsp;

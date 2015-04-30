@@ -231,6 +231,10 @@
   .btn {
     font-size: 80%;
   }
+  
+  .shrink-font {
+    font-size: 90%;
+  }
 
 }
 
@@ -361,6 +365,10 @@
   .navbar-secondary i {
     font-size: 100%;
     padding: 2px 0;
+  }
+  
+  .shrink-font {
+    font-size: 80%;
   }
   
 }
