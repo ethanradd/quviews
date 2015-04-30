@@ -7,7 +7,72 @@
            <div class="center wow">
                 <h1 class="big_blue">QuViews</h1>
                 <p class="lead">Your Quick Reviews</p>
+                <br />
+                <span class="light_gray_font">
+                <a href="/all/movies">movies</a> &nbsp; . &nbsp;
+                <a href="/all/tv">tv</a> &nbsp; . &nbsp;
+                <a href="/all/music">music</a> &nbsp; . &nbsp;
+                <a href="/all/games">games</a> &nbsp; . &nbsp;
+                <a href="/all/books">books</a> &nbsp; . &nbsp;
+                <a href="/all/gadgets">gadgets</a> &nbsp;
+                </span>
             </div>
+            
+            <!--
+            
+            <div class="row">
+                <div class="features img-responsive">
+                    <div class="col-md-2 col-sm-6  wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap-home">
+                            <a href="/all/movies"><i class="fa fa-play-circle"></i></a>
+                            <h2>Movies</h2>
+                            <h3></h3>
+                        </div>
+                    </div><!--/.col-md-2 ->
+                
+                
+                    <div class="col-md-2 col-sm-6  wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap-home">
+                            <a href="/all/tv"><i class="fa fa-play-circle-o"></i></a>
+                            <h2>TV</h2>
+                            <h3></h3>
+                        </div>
+                    </div><!--/.col-md-2 ->
+
+                    <div class="col-md-2 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap-home">
+                            <a href="/all/music"><i class="fa fa-music"></i></a>
+                            <h2>Music</h2>
+                            <h3></h3>
+                        </div>
+                    </div><!--/.col-md-2 ->
+
+                    <div class="col-md-2 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap-home">
+                            <a href="/all/games"><i class="fa fa-gamepad"></i></a>
+                            <h2>Games</h2>
+                            <h3></h3>
+                        </div>
+                    </div><!--/.col-md-2 ->
+                
+                    <div class="col-md-2 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap-home">
+                            <a href="/all/books"><i class="fa fa-book"></i></a>
+                            <h2>Books</h2>
+                            <h3></h3>
+                        </div>
+                    </div><!--/.col-md-2 ->
+                    
+                    <div class="col-md-2 col-sm-6 wow" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap-home">
+                            <a href="/all/gadgets"><i class="fa fa-mobile"></i></a>
+                            <h2>Gadgets</h2>
+                            <h3></h3>
+                        </div>
+                    </div><!--/.col-md-2 ->
+                    
+                </div><!--/.services ->
+            </div><!--/.row -->
                     
            <div class="row">
                 <div class="col-md-4 ">
@@ -55,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ Str::limit($item->name, 25) }} ({{ $item->year }})</a> </h3>
+                    <h3 class="recent-work-description"><a href="/items/{{ $item->id }}">{{ Str::limit($item->name, 20) }} ({{ $item->year }})</a> </h3>
                 </div>
                 @endforeach
                 

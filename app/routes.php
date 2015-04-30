@@ -61,6 +61,67 @@ Route::get('/home', function()
 	return View::make('home', $data);
 });
 
+/*-- [ALL ITEMS] ----------------------------------------------------------------------------------------*/
+
+Route::get('/all/{item_type}', function($item_type)
+{
+	if ($item_type == "movies") {
+		// Get latest Items to display on home page
+		// We only get 'locked' items meaning they have been approved by admin
+        $items = DB::table('categories')
+                        ->join('items', 'categories.id', '=', 'items.category_id')
+                        ->select('items.id', 'items.name', 'items.year', 'items.creator', 'items.image', 'items.locked', 'categories.name as category_name', 'categories.image as category_image')
+						->where('items.locked', '!=', "topic")
+						->where('items.category_id', '=', 1)
+						->orderBy('items.created_at', 'DESC')->paginate(16);
+	} elseif ($item_type == "tv") {
+        $items = DB::table('categories')
+                        ->join('items', 'categories.id', '=', 'items.category_id')
+                        ->select('items.id', 'items.name', 'items.year', 'items.creator', 'items.image', 'items.locked', 'categories.name as category_name', 'categories.image as category_image')
+						->where('items.locked', '!=', "topic")
+						->where('items.category_id', '=', 2)
+						->orderBy('items.created_at', 'DESC')->paginate(16);
+	} elseif ($item_type == "music") {
+        $items = DB::table('categories')
+                        ->join('items', 'categories.id', '=', 'items.category_id')
+                        ->select('items.id', 'items.name', 'items.year', 'items.creator', 'items.image', 'items.locked', 'categories.name as category_name', 'categories.image as category_image')
+						->where('items.locked', '!=', "topic")
+						->where('items.category_id', '=', 3)
+						->orderBy('items.created_at', 'DESC')->paginate(16);
+	} elseif ($item_type == "games") {
+        $items = DB::table('categories')
+                        ->join('items', 'categories.id', '=', 'items.category_id')
+                        ->select('items.id', 'items.name', 'items.year', 'items.creator', 'items.image', 'items.locked', 'categories.name as category_name', 'categories.image as category_image')
+						->where('items.locked', '!=', "topic")
+						->where('items.category_id', '=', 4)
+						->orderBy('items.created_at', 'DESC')->paginate(16);
+	} elseif ($item_type == "books") {
+        $items = DB::table('categories')
+                        ->join('items', 'categories.id', '=', 'items.category_id')
+                        ->select('items.id', 'items.name', 'items.year', 'items.creator', 'items.image', 'items.locked', 'categories.name as category_name', 'categories.image as category_image')
+						->where('items.locked', '!=', "topic")
+						->where('items.category_id', '=', 5)
+						->orderBy('items.created_at', 'DESC')->paginate(16);
+	} elseif ($item_type == "gadgets") {
+        $items = DB::table('categories')
+                        ->join('items', 'categories.id', '=', 'items.category_id')
+                        ->select('items.id', 'items.name', 'items.year', 'items.creator', 'items.image', 'items.locked', 'categories.name as category_name', 'categories.image as category_image')
+						->where('items.locked', '!=', "topic")
+						->where('items.category_id', '=', 6)
+						->orderBy('items.created_at', 'DESC')->paginate(16);
+	} else {
+		// redirect
+         return Redirect::to('/home')->with('message', 'Sorry, there was an error!');
+	}
+	
+	$data['header'] = "All " . $item_type;
+	$data['title'] = "QuViews - All " . $item_type . " - Your Quick Reviews";
+	$data['items'] = $items;
+	$data['item_type'] = $item_type;
+	
+	return View::make('all', $data);
+});
+
 /* -- [ADD-ITEMS "HOME" PAGE] -------------------------------------------------------------------------- */
 
 // ##Ed this is needed to pass item name through a check
