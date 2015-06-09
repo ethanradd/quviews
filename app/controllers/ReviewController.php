@@ -62,7 +62,7 @@ class ReviewController extends \BaseController {
             
             $data['header'] = "Review - " . $item->name . " (" . $item->year . ") <br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
             $data['title'] = "QuViews - Review " . $item->name;
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['category'] = $item_category;
             $data['item'] = $item;
             
@@ -163,7 +163,7 @@ class ReviewController extends \BaseController {
             $data['title'] = "QuViews - " . $item->name . " (" . $item->year . ")" . " - Quick Review";
             $data['item'] = $item;
             $data['category'] = $item_category;
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['review'] = $review;
             
             // show the view and pass the data to it
@@ -196,7 +196,7 @@ class ReviewController extends \BaseController {
             
             $data['header'] = "Edit Review - " . $item->name . " (" . $item->year . ")<br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
             $data['title'] = "QuViews - Edit Review";
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['review'] = $review;
             $data['category'] = $item_category;
             $data['item'] = $item;
@@ -299,7 +299,7 @@ class ReviewController extends \BaseController {
             
             $data['header'] = "Quick Reviews Feed - " . $item->name . " (" . $item->year . ") <br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
             $data['title'] = "QuViews - Read Reviews";
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['category'] = $item_category;
             $data['item'] = $item;
             $data['reviews'] = $reviews;

@@ -158,7 +158,7 @@ class FriendController extends \BaseController {
             $data['title'] = "QuViews - Following List";
             $data['following'] = $following;
             $data['following_count'] = $following_count;
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['profile'] = $profile;
             
             // show the view and pass data
@@ -197,7 +197,7 @@ class FriendController extends \BaseController {
             $data['title'] = "QuViews - Followers List";
             $data['followers'] = $followers;
             $data['followers_count'] = $followers_count;
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['profile'] = $profile;
             
             // show the view and pass data

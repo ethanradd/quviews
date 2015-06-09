@@ -62,12 +62,12 @@
                         <div id="feed_section">
                           <div id="feed_img">
                           <!-- user profile pic -->
-			  <a href="/profiles/{{ $this_reply_profile->profile_id }}">{{ HTML::image("images/profiles/small/" . $this_reply_profile->image, 'user image') }}</a>
+			  <a href="/profiles/{{ $this_reply_profile->id }}">{{ HTML::image("images/profiles/small/" . $this_reply_profile->image, 'user image') }}</a>
                           </div>
                           
                           <div id="feed_body">
                           <p class="controls">
-                          <b><a href="/profiles/{{ $reply->profile_id }}">{{ $this_reply_author->username }}</a></b>
+                          <b><a href="/profiles/{{ $this_reply_profile->id }}">{{ $this_reply_author->username }}</a></b>
 			  <span class="light_gray_font pull-right">
 				@if($reply->created_at == $reply->updated_at)
 				{{ Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}

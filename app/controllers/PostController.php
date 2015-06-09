@@ -53,7 +53,7 @@ class PostController extends \BaseController {
             $data['header'] = "Discuss - " . $item->name . " (" . $item->year . ") <br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
 			}
             $data['title'] = "QuViews - Discuss " . $item->name;
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['category'] = $item_category;
             $data['item'] = $item;
             
@@ -169,7 +169,7 @@ class PostController extends \BaseController {
             $data['title'] = "QuViews - " . $item->name . " (" . $item->year . ")" . " - Post";
             $data['item'] = $item;
             $data['category'] = $item_category;
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['post'] = $post;
             $data['replies'] = $replies;
             $data['reply_count'] = $reply_count;
@@ -204,7 +204,7 @@ class PostController extends \BaseController {
             
             $data['header'] = "Edit Post - " . $item->name . " (" . $item->year . ")<br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
             $data['title'] = "QuViews - Edit Post";
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['post'] = $post;
             $data['category'] = $item_category;
             $data['item'] = $item;
@@ -312,7 +312,7 @@ class PostController extends \BaseController {
             $data['header'] = "Discussion Feed - " . $item->name . " (" . $item->year . ") <br /><span class=\"light_gray_font\"> by " . $item->creator . "</span>";
 			}
             $data['title'] = "QuViews - " . $item->name . " - Discussion Posts";
-            $data['image_path'] = "images/items/" . $item->image;
+            $data['image_path'] = "images/items/medium/" . $item->image;
             $data['category'] = $item_category;
             $data['item'] = $item;
             $data['posts'] = $posts;

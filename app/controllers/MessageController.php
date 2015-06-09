@@ -81,7 +81,7 @@ class MessageController extends \BaseController {
             $data['title'] = "QuViews - Create new Message - Your Quick Reviews";
             $data['receiver'] = $receiver;
             $data['profile'] = $profile;
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['messages'] = $messages;
             $data['message_count'] = $message_count;
             $data['friendship_following_me'] = $friendship_following_me;
@@ -254,7 +254,7 @@ class MessageController extends \BaseController {
             $data['title'] = "QuViews - Messages List";
             $data['messages'] = $messages;
             $data['message_count'] = $message_count;
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['profile'] = $profile;
             
             // show the view and pass data
@@ -305,7 +305,7 @@ class MessageController extends \BaseController {
             $data['title'] = "QuViews - Messages List";
             $data['messages'] = $messages;
             $data['message_count'] = $message_count;
-            $data['image_path'] = "images/profiles/" . $profile->image;
+            $data['image_path'] = "images/profiles/medium/" . $profile->image;
             $data['profile'] = $profile;
             
             // show the view and pass data
